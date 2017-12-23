@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation= "vertical"
+    tools:context="com.example.aaron.witnessprotection.MainActivity">
+
+    <TableRow
+        android:id = "@+id/tableRow12"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight = "1"
+        android:textSize = "65sp">
+
+        <Button
+            android:id = "@+id/LetsPlay"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:text="Lets Play!"
+            android:layout_weight="1"
+            android:onClick="LetsPlay"/>
+
+
+    </TableRow>
+
+    <TableRow
+        android:id = "@+id/tableRow23"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight = "1"
+        android:textSize = "65sp">
+
+        <Button
+            android:id = "@+id/Roles"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:text="Roles"
+            android:layout_weight="1"
+            android:onClick="Roles"/>
+
+        <Button
+            android:id = "@+id/HowToPlay"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:text="How To Play"
+            android:layout_weight="1"
+            android:onClick="HowToPlay"/>
+
+
+
+    </TableRow>
+
+</LinearLayout>

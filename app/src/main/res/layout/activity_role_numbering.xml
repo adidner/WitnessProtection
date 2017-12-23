@@ -1,0 +1,1367 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/topper"
+        >
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/OutOff"
+            android:layout_marginTop="10dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:text="Filled:"
+            android:layout_alignParentTop="true"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/total"
+            android:layout_marginTop="10dp"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:text="Needed:"
+            android:layout_below="@+id/OutOff"
+            android:layout_alignRight="@+id/OutOff"
+            android:layout_alignEnd="@+id/OutOff" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/total2"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:text="0"
+            android:layout_alignTop="@+id/total"
+            android:layout_toRightOf="@+id/total"
+            android:layout_toEndOf="@+id/total" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/OutOff2"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:text="0"
+            android:layout_alignTop="@+id/OutOff"
+            android:layout_toRightOf="@+id/OutOff"
+            android:layout_toEndOf="@+id/OutOff" />
+
+    </RelativeLayout>
+
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/scrollView"
+    android:layout_below="@+id/topper"
+    >
+    <!-- considering the addition of small question mark buttons next to each edittext that shows the card to remind the chooser what each role is/does !-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.aaron.witnessprotection.RoleNumbering"
+        >
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Evil Roles"
+            android:id="@+id/evilroles"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"         />
+
+        <TableRow
+            android:id="@+id/rowy"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/evilroles"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m1"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Murderers"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+        <EditText
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/murderer"
+            android:layout_marginTop="10dp"
+            android:text="0"
+            android:layout_weight="0.75"
+            android:enabled="false"
+            android:textColor="@color/black"
+            />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p1"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy2"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m2"
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="HostageTakers"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/hostagetaker"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p2"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy3"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy2"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m3"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="BlackMailers"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/blackmailer"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p3"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy4"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy3"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m4"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Traitors"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/traitor"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p4"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy5"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy4"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m5"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Assasins"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/assasin"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p5"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy5.5"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy5"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m6"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="KingPins"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/kingpin"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p6"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy6"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy5.5"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m7"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Lawyers"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/lawyer"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p7"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy7"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy6"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m8"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Moles"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/mole"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p8"
+                />
+
+        </TableRow>
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good Roles"
+            android:id="@+id/goodroles"
+            android:layout_below="@+id/rowy7"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"         />
+
+
+
+        <TableRow
+            android:id="@+id/rowy8"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/goodroles"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m9"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Witnesses"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/witness"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p9"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy9"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy8"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m10"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Handler"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/handler"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p10"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/rowy10"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy9"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m11"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="SWAT"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/SWAT"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p11"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy11"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy10"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m12"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="NeighborhoddWatch"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/neighborhoodwatch"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p12"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy12"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy11"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m13"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Police"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/police"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p13"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy13"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy12"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m14"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="BodyGuard"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/bodyguard"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p14"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy14"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy13"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m15"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="ProtectedDignitary"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/protecteddignitary"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p15"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy15"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy14"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m16"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Civilian"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/civilian"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p16"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy16"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy15"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m17"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Transient"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/trans"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p17"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy17"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy16"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m18"
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="BountryHunter"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/bountyhunter"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p18"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy18"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy17"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m19"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Negotiator"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/negotiator"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p19"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy19"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy18"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m20"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Excecutioner"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/excecutioner"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p20"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy20"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy19"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m21"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Detective"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/detective"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p21"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy21"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy20"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m22"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Doctor"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/doctor"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p22"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy22"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy21"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m23"
+
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="SuicideBomber"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/suicidebomber"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p23"
+                />
+
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/rowy23"
+            android:layout_width="fill_parent"
+            android:layout_height="60dip"
+            android:textSize="65sp"
+            android:layout_below="@+id/rowy22"
+            >
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="-"
+                android:layout_weight="0.5"
+                android:id="@+id/m24"
+                />
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="Interrogator"
+                android:layout_weight="1"
+                android:enabled="false"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/interrogator"
+                android:layout_marginTop="10dp"
+                android:text="0"
+                android:layout_weight="0.75"
+                android:enabled="false"
+                android:textColor="@color/black"
+                />
+
+            <Button
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:text="+"
+                android:layout_weight="0.5"
+                android:id="@+id/p24"
+                />
+
+        </TableRow>
+
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:id="@+id/confirmroles"
+            android:onClick="roleconfirm"
+            android:layout_below="@+id/rowy23"
+            android:layout_alignRight="@+id/goodroles"
+            android:layout_alignEnd="@+id/goodroles" />
+
+
+
+
+    </RelativeLayout>
+</ScrollView>
+
+
+</RelativeLayout>

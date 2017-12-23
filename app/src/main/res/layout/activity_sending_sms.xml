@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/Main"
+     >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rely"
+            android:layout_alignParentTop="true"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Text"
+                android:id="@+id/sendtext"
+                android:layout_marginTop="10dp"
+                android:onClick="sendtext"
+                android:layout_alignParentTop="true"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:id="@+id/save"
+                android:layout_alignTop="@+id/load"
+                android:layout_toRightOf="@+id/load"
+                android:layout_toEndOf="@+id/load" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Load"
+                android:id="@+id/load"
+                android:layout_alignTop="@+id/sendtext"
+                android:layout_toRightOf="@+id/sendtext"
+                android:layout_toEndOf="@+id/sendtext" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:id="@+id/digcontacts"
+
+                android:layout_alignTop="@+id/save"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@+id/save"
+                android:layout_toEndOf="@+id/save" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:id="@+id/gameover"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/sendtext"
+                android:layout_toLeftOf="@+id/load"
+                android:layout_toStartOf="@+id/load" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:id="@+id/editText"
+                android:hint="Hide Sec"
+                android:layout_below="@+id/gameover"
+                android:layout_toRightOf="@+id/editText4"
+                android:layout_alignRight="@+id/digcontacts"
+                android:layout_alignEnd="@+id/digcontacts" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:hint="Game Sec"
+                android:id="@+id/editText2"
+                android:layout_alignBaseline="@+id/editText3"
+                android:layout_alignBottom="@+id/editText3"
+                android:layout_toRightOf="@+id/editText3"
+                android:layout_alignRight="@+id/digcontacts"
+                android:layout_alignEnd="@+id/digcontacts" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:ems="10"
+                android:hint="Game Min"
+                android:id="@+id/editText3"
+                android:layout_below="@id/editText4"
+                android:layout_alignLeft="@id/gameover"
+                android:layout_alignRight="@+id/load"
+                android:layout_alignEnd="@+id/load" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="time"
+                android:hint="Hide Min"
+                android:ems="10"
+                android:id="@+id/editText4"
+                android:layout_below="@+id/gameover"
+                android:layout_alignLeft="@+id/gameover"
+                android:layout_alignRight="@+id/load"
+                android:layout_alignEnd="@+id/load" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView"
+            android:layout_below="@+id/rely">
+
+            <TableLayout
+
+                android:orientation="vertical"
+                android:id="@+id/layoutSMS"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                tools:context="com.example.aaron.witnessprotection.SendingSMS">
+
+
+
+            </TableLayout>
+
+
+        </ScrollView>
+
+</RelativeLayout>

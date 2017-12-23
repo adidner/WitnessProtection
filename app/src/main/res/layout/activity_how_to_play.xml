@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.aaron.witnessprotection.HowToPlay"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="How To Play Witness Protection"
+        android:id="@+id/textView2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+        android:layout_weight="0.02" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_weight="0.50"
+
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Witness protection begins with every player being assigned a role. One person will be assigned the Witness role and that person will go and hide within some pre determined boundaries. All other players will read about their assigned role. Each role can be either good or bad and has specific powers and abilities. An example is the Neighborhood Watch Character who is a good guy that kills the first perosn they touch (even if the touch is by accident). For good guys to win 1/3 of total players need to find and hide with the witness. For bad guys to win they need to kill the witness or time can run out. (a time limit should be disscussed ahead of time). If you want to know more about specific roles, go back to the menu and check out the roles tab. Otherwise go get started!"
+            android:id="@+id/textView"
+             />
+
+    </ScrollView>>
+
+</LinearLayout>
+
