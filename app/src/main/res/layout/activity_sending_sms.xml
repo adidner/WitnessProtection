@@ -71,10 +71,11 @@
                 android:inputType="time"
                 android:id="@+id/editText"
                 android:hint="Hide Sec"
-                android:layout_below="@+id/gameover"
-                android:layout_toRightOf="@+id/editText4"
-                android:layout_alignRight="@+id/digcontacts"
-                android:layout_alignEnd="@+id/digcontacts" />
+                android:layout_above="@+id/editText2"
+                android:layout_alignRight="@+id/save"
+                android:layout_alignEnd="@+id/save"
+                android:layout_alignLeft="@+id/save"
+                android:layout_alignStart="@+id/save" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -82,11 +83,11 @@
                 android:inputType="time"
                 android:hint="Game Sec"
                 android:id="@+id/editText2"
-                android:layout_alignBaseline="@+id/editText3"
-                android:layout_alignBottom="@+id/editText3"
-                android:layout_toRightOf="@+id/editText3"
-                android:layout_alignRight="@+id/digcontacts"
-                android:layout_alignEnd="@+id/digcontacts" />
+                android:layout_below="@+id/editText4"
+                android:layout_alignRight="@+id/editText"
+                android:layout_alignEnd="@+id/editText"
+                android:layout_alignLeft="@+id/editText"
+                android:layout_alignStart="@+id/editText" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -96,9 +97,10 @@
                 android:hint="Game Min"
                 android:id="@+id/editText3"
                 android:layout_below="@id/editText4"
-                android:layout_alignLeft="@id/gameover"
                 android:layout_alignRight="@+id/load"
-                android:layout_alignEnd="@+id/load" />
+                android:layout_alignEnd="@+id/load"
+                android:layout_toRightOf="@+id/gameover"
+                android:layout_toEndOf="@+id/gameover" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -107,10 +109,11 @@
                 android:hint="Hide Min"
                 android:ems="10"
                 android:id="@+id/editText4"
-                android:layout_below="@+id/gameover"
-                android:layout_alignLeft="@+id/gameover"
+                android:layout_below="@+id/load"
                 android:layout_alignRight="@+id/load"
-                android:layout_alignEnd="@+id/load" />
+                android:layout_alignEnd="@+id/load"
+                android:layout_toRightOf="@+id/gameover"
+                android:layout_toEndOf="@+id/gameover" />
 
         </RelativeLayout>
 
