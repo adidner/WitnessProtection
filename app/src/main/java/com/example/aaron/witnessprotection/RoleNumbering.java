@@ -1,16 +1,22 @@
 package com.example.aaron.witnessprotection;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpanWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -165,9 +171,156 @@ public class RoleNumbering extends AppCompatActivity {
         EditText total2 = (EditText) findViewById(R.id.total2);
         total2.setText(String.valueOf(total));
 
+        String Detectivetext = "Detective: \n" +
+                "Mission: Find and hide with the witness\n" +
+                "Skill: You can talk to dead players to find out who they were and which player killed them (They have to tell you the truth). If playing in the dark, you may use a handheld light source. \n";
+        String SuicideBombertext = "Suicide Bomber:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: Sacrifice your life to kill another player by hugging them. All players within a 5 foot radius are also killed.\n";
+        String Interrogatortext = "Interrogator:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: Place your hand on another player’s shoulder to make them reveal their identity to you. They must be honest. You won’t die if you discover the Traitor this way. \n";
+        String Executionertext = "Executioner:\n" +
+                "Mission: Find and hide with the witness\n" +
+                "Skill: You may kill one player during the game by running your hand across their neck\n";
+        String Negotiatortext = "Negotiator:\n" +
+                "Mission: Find and hide with the Witness\n" +
+                "Skill: Permanently remove the Hostage Taker’s ability by grabbing their elbow. You can only do this while they have a hostage. You cannot use this ability while you are taken hostage. \n";
+        String BountyHuntertext = "Bounty Hunter:\n" +
+                "Mission: Find and hide with the Witness\n" +
+                "Skill: You may kill once during the game. If you kill the Murderer, you will be the Witness in the next round.\n";
+        String Transienttext = "Transient:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: If you stay in place for longer than 15 seconds, you die.\n";
+        String Civiliantext = "Civilian:\n" +
+                "Mission: Find and hide with the Witness\n" +
+                "Skill: Be creative -- not having extra abilities doesn’t mean you can’t be valuable to your team.\n";
+        String ProtectedDignitarytext = "Protected Dignitary:\n" +
+                "Mission: Find and hide with the Witness\n" +
+                "Skill: You are immune to all negative effects aside from death. The player who kills you also dies. \n";
+        String Bodyguardtext = "Bodyguard:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: Sacrifice your own life to revive another player. Do this by drawing a cross on their arm.\n";
+        String PoliceOfficertext = "Police Officer:\n" +
+                "Mission: Find and hide with the Witness\n" +
+                "Skill: Grab both wrists of another player to freeze them for 30 seconds (arrest them). You may only arrest each player once. You do not need to stay with the player while they are frozen.\n";
+        String NeighborhoodWatchtext = "Neighborhood Watch:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: The first player you make physical contact with dies, whether intentional or not.\n";
+        String SWATtext = "SWAT:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: If you witness a player die, you may kill the player who caused the death.\n";
+        String Witnesstext = "Witness:\n" +
+                "Mission: Hide! If ⅓ the number of players joins you, all Good Characters win.\n" +
+                "Skill: If the murderers find you and kill you or time runs out all Bad Characters win. You will have a certain number of minutes to hide\n";
+        String Handlertext = "Handler:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: Before the Witness hides, reveal yourself as a Handler. Follow the Witness until they have hidden.  \n";
+        String Doctortext = "Doctor:\n" +
+                "Mission: Find and hide with the Witness.\n" +
+                "Skill: You revive players by drawing a cross on their arms. You cannot use this ability while you are taken hostage. \n";
+        String Moletext = "Mole:\n" +
+                "Mission: use your ability to get the Witness killed.\n" +
+                "Skill: Before the Witness hides, reveal yourself as a Handler. Follower the Witness until they have hidden. Return to Base before the game begins. \n";
+        String Assassintext = "Assassin:\n" +
+                "Mission: Use your ability to get the Witness killed.\n" +
+                "Skill: Kill players by running your hand across their necks; then place your hand on the victim's shoulder to make them reveal their identity to you. You die if the player you killed was a Civilian, or if you do not check their identity. \n";
+        String Lawyertext = "Lawyer:\n" +
+                "Mission: Use your ability to get the Witness killed.\n" +
+                "Skill: You can revive the Murderer by drawing a cross on their arm. You may only use this ability twice.\n";
+        String Kingpintext = "Kingpin:\n" +
+                "Mission: Use your ability to get the Witness killed.\n" +
+                "Skill: If the Murderer dies, you become a new Murderer. If the Murderer or Assassin attempts to kill you, that player dies (you do not).\n";
+        String Traitortext = "Traitor:\n" +
+                "Mission: Use your ability to get the Witness killed.\n" +
+                "Skill: Any player (Good or Evil) dies when they verbally reveal their identity to you, or when they ask you to reveal your identity.";
+        String Blackmailertext = "Blackmailer:\n" +
+                "Mission: Use your ability to get the Witness killed.\n" +
+                "Skill: As long as you are touching the Witness, they cannot win the game\n";
+        String Murderertext = "Murderer:\n" +
+                "Mission: Use your ability to get the Witness killed.\n" +
+                "Skill: Kill players by running your hand across their necks.\n";
+        String HostageTakertext = "Hostage Taker:\n" +
+                "Mission: Use your ability to get the Witness killed.\n" +
+                "Skill: Grab a player’s elbow to hold them hostage. They must stay with you until you let go or until the Negotiator removes your ability. You may only hold one player at a time. \n";
+
+
+        TextView Murderer = (TextView) findViewById(R.id.MurdererText);
+        info(Murderer,Murderertext);
+        TextView HostageTaker = (TextView) findViewById(R.id.HostageTakerText);
+        info(HostageTaker,HostageTakertext);
+        TextView BlackMailer = (TextView) findViewById(R.id.BlackMailerText);
+        info(BlackMailer,Blackmailertext);
+        TextView Traitor = (TextView) findViewById(R.id.TraitorText);
+        info(Traitor,Traitortext);
+        TextView Assasin = (TextView) findViewById(R.id.AssasinText);
+        info(Assasin,Assassintext);
+        TextView Kingpin = (TextView) findViewById(R.id.KingpinText);
+        info(Kingpin,Kingpintext);
+        TextView Lawyer = (TextView) findViewById(R.id.LawyerText);
+        info(Lawyer, Lawyertext);
+        TextView Mole = (TextView) findViewById(R.id.MoleText);
+        info(Mole, Moletext);
+        TextView Witness = (TextView) findViewById(R.id.WitnessText);
+        info(Witness,Witnesstext);
+        TextView Handler = (TextView) findViewById(R.id.HandlerText);
+        info(Handler,Handlertext);
+        TextView Doctor = (TextView) findViewById(R.id.DoctorText);
+        info(Doctor, Doctortext);
+        TextView Swat = (TextView) findViewById(R.id.SWATText);
+        info(Swat, SWATtext);
+        TextView Neighborhoodwatch = (TextView) findViewById(R.id.NeighborhoodWatchText);
+        info(Neighborhoodwatch,NeighborhoodWatchtext);
+        TextView Police = (TextView) findViewById(R.id.PoliceText);
+        info(Police, PoliceOfficertext);
+        TextView BodyGuard = (TextView) findViewById(R.id.BodyGuardText);
+        info(BodyGuard,Bodyguardtext);
+        TextView ProtectedDignitary = (TextView) findViewById(R.id.ProtectedDignitaryText);
+        info(ProtectedDignitary,ProtectedDignitarytext);
+        TextView Civilian = (TextView) findViewById(R.id.CivilanText);
+        info(Civilian,Civiliantext);
+        TextView Transient = (TextView) findViewById(R.id.TransientText);
+        info(Transient,Transienttext);
+        TextView BountyHunter = (TextView) findViewById(R.id.BountyHuntrText);
+        info(BountyHunter,BountyHuntertext);
+        TextView Negotiator = (TextView) findViewById(R.id.NegotiatoText);
+        info(Negotiator,Negotiatortext);
+        TextView Executioner = (TextView) findViewById(R.id.ExecutionerText);
+        info(Executioner,Executionertext);
+        TextView Interrogator = (TextView) findViewById(R.id.InterrogatorText);
+        info(Interrogator,Interrogatortext);
+        TextView SuicideBomber = (TextView) findViewById(R.id.SuicideBomberText);
+        info(SuicideBomber,SuicideBombertext);
+        TextView Detective = (TextView) findViewById(R.id.DetectiveText);
+        info(Detective,Detectivetext);
+
+
+
+
 
     }
 
+
+    public void info(TextView TV, final String info){
+        TV.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                AlertDialog ad = new AlertDialog.Builder(RoleNumbering.this).create();
+                ad.setCancelable(false); // This blocks the 'BACK' button
+                ad.setMessage(info);
+                ad.setButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                ad.show();
+
+                return true;
+            }
+        });
+    }
 
     public void minus(Button minus, final EditText changes, final EditText filled){
         minus.setOnClickListener(new View.OnClickListener() {
@@ -206,8 +359,6 @@ public class RoleNumbering extends AppCompatActivity {
     //click listener for the roleconfirm button (declared in XLM)
     public void roleconfirm(View view){
 
-
-        int numberplayers=0;
         //getting the number of total players from shared preferences, saved in MainActivity
         SharedPreferences prefs = getSharedPreferences("Global", getApplicationContext().MODE_PRIVATE);
         int total = prefs.getInt("numberplayers", 0);
@@ -496,7 +647,6 @@ public class RoleNumbering extends AppCompatActivity {
                 }
             }
 
-
             //parse the list into shared preferences
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor mEdit1 = sp.edit();
@@ -511,8 +661,6 @@ public class RoleNumbering extends AppCompatActivity {
             }
 
            mEdit1.commit();
-
-
 
             startActivity(new Intent(view.getContext(), SendingSMS.class));
         }
@@ -537,7 +685,6 @@ public class RoleNumbering extends AppCompatActivity {
         }
         else{
            return Integer.parseInt(therolenumber);
-
         }
     }
 
@@ -574,29 +721,28 @@ public class RoleNumbering extends AppCompatActivity {
         int totalroles =
                 checknull(murderer.getText().toString())+
                 checknull(hostagetaker.getText().toString())+
-                        checknull(blackmailer.getText().toString())+
-                        checknull(lawyer.getText().toString())+
-                        checknull(mole.getText().toString())+
-                        checknull(traitor.getText().toString())+
-                        checknull(kingpin.getText().toString())+
-                        checknull(assasin.getText().toString())+
-                        checknull(witness.getText().toString())+
-                        checknull(SWAT.getText().toString())+
-                        checknull(neighborhoodwatch.getText().toString())+
-                        checknull(handler.getText().toString())+
-                        checknull(police.getText().toString())+
-                        checknull(bodyguard.getText().toString())+
-                        checknull(protecteddignitary.getText().toString())+
-                        checknull(civilian.getText().toString())+
-                        checknull(bountyhunter.getText().toString())+
-                        checknull(trans.getText().toString())+
-                        checknull(negotiator.getText().toString())+
-                        checknull(excecutioner.getText().toString())+
-                        checknull(detective.getText().toString())+
-                        checknull(doctor.getText().toString())+
-                        checknull(suicidebomber.getText().toString())+
-                        checknull(interrogator.getText().toString());
-
+                checknull(blackmailer.getText().toString())+
+                checknull(lawyer.getText().toString())+
+                checknull(mole.getText().toString())+
+                checknull(traitor.getText().toString())+
+                checknull(kingpin.getText().toString())+
+                checknull(assasin.getText().toString())+
+                checknull(witness.getText().toString())+
+                checknull(SWAT.getText().toString())+
+                checknull(neighborhoodwatch.getText().toString())+
+                checknull(handler.getText().toString())+
+                checknull(police.getText().toString())+
+                checknull(bodyguard.getText().toString())+
+                checknull(protecteddignitary.getText().toString())+
+                checknull(civilian.getText().toString())+
+                checknull(bountyhunter.getText().toString())+
+                checknull(trans.getText().toString())+
+                checknull(negotiator.getText().toString())+
+                checknull(excecutioner.getText().toString())+
+                checknull(detective.getText().toString())+
+                checknull(doctor.getText().toString())+
+                checknull(suicidebomber.getText().toString())+
+                checknull(interrogator.getText().toString());
 
         return totalroles;
     }
