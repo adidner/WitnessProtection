@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -40,14 +41,18 @@ public class RoleNumbering2 extends AppCompatActivity {
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-
+        //getting the total number of players from the previous window
         SharedPreferences prefs = getSharedPreferences("Global", getApplicationContext().MODE_PRIVATE);
         int total = prefs.getInt("numberplayers", 0);
         EditText total2 = (EditText) findViewById(R.id.total2);
+
+        //Showing the user how many total roles they need
         total2.setText(String.valueOf(total));
 
-
+        //Will hold TextViews with numbers coresponding to each role
         ArrayList<TextView> RoleCounting = new ArrayList<>();
+
+        //Will hold the explanation text for every role
         String[] Backgrounds = declareBackgrounds();
 
         String[] Identities = {"Witness","Detective","SuicideBomber","Interrogator","Executioner","Negotitor","BounteryHunter"
@@ -65,19 +70,39 @@ public class RoleNumbering2 extends AppCompatActivity {
 
     }
 
+
+    /*
+    * Creates a TableRow and Confirm button and puts both inside the main Table Layout
+    * Sets an onclick listener which
+    *   uses the Role Couting and Background arrays to make an new array which is put into shared prefereces and becomes
+    *   the text sentout to players in the next Activity of the app.
+    *
+     */
     public void confirm(final String[] Backgrounds, final ArrayList<TextView> RoleCounting){
+        //creating the table row, and confirmbutton.
         TableLayout Capsule = (TableLayout) findViewById(R.id.capsule);
-            /* Create a new row to be added. */
         TableRow tr = new TableRow(this);
         tr.setGravity(Gravity.CENTER_HORIZONTAL);
         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-
         Button Confirm = new Button(this);
         Confirm.setText("Confirm");
 
+        //Click Listener for the confirm button
+        initializeConfirmClick(Confirm, RoleCounting, Backgrounds);
+
+
+        //add the new Table row containing the confirm button into the main table layout
+        tr.addView(Confirm);
+        Capsule.addView(tr, new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+    }
+
+    //Click Listener for the confirm button
+    public void initializeConfirmClick(Button Confirm, final ArrayList<TextView> RoleCounting, final String[] Backgrounds){
         Confirm.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //getting the number of total players from shared preferences, saved in MainActivity
                 SharedPreferences prefs = getSharedPreferences("Global", getApplicationContext().MODE_PRIVATE);
                 int total = prefs.getInt("numberplayers", 0);
@@ -92,9 +117,9 @@ public class RoleNumbering2 extends AppCompatActivity {
 
                     ArrayList<String> RolesSMS = new ArrayList<>();
 
-                    //checking every edit text and based on that number put, that many sets of the coresponding string into the
-                    //RolesSMS
-                    //this probably should have been a method
+                    //checking every TextView and based on that number inside the RoleCounting Array
+                    //, taking the coresponding explanation text from the background array and putting that into
+                    //an array called RolesSMS which will go into shared prefereces
                     for(int i = 0; i < RoleCounting.size();i++) {
                         if (!(RoleCounting.get(i).getText().toString().matches(""))) {
                             int counter = Integer.parseInt(RoleCounting.get(i).getText().toString());
@@ -120,14 +145,17 @@ public class RoleNumbering2 extends AppCompatActivity {
 
                     mEdit1.commit();
 
+                    //start the SendingSMS activity
                     startActivity(new Intent(RoleNumbering2.this, SendingSMS.class));
                 }
 
+                //if you don't have enought roles
                 else if(total > totalroles){
                     Toast.makeText(getApplicationContext(), "enter more roles",
                             Toast.LENGTH_LONG).show();
 
                 }
+                //if you have to many roles
                 else if(total < totalroles){
                     Toast.makeText(getApplicationContext(), "enter fewer roles",
                             Toast.LENGTH_LONG).show();
@@ -135,15 +163,9 @@ public class RoleNumbering2 extends AppCompatActivity {
                 }
             }
         });
-
-        tr.addView(Confirm);
-        Capsule.addView(tr, new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-
     }
 
-
-
-
+    //creates a title TextView with a given input string as text
     public void createtitle(String titleText){
         TableLayout Capsule = (TableLayout) findViewById(R.id.capsule);
 
@@ -161,10 +183,12 @@ public class RoleNumbering2 extends AppCompatActivity {
         Capsule.addView(tr, new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
     }
 
+    //Initializes a given row of the scrolling table
     public void initialize(String identity,String background,ArrayList<TextView> RoleCounting){
-        /* Find Tablelayout defined in main.xml */
+       //gettig the Table layout from XML
         TableLayout Capsule = (TableLayout) findViewById(R.id.capsule);
-    /* Create a new row to be added. */
+
+        //making a table row
         TableRow tr = new TableRow(this);
         tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
         tr.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -172,24 +196,28 @@ public class RoleNumbering2 extends AppCompatActivity {
 
         EditText filled = (EditText) findViewById(R.id.OutOff2);
 
-         /* Create a Button to be the row-content. */
+        //Making the minus button for the row
         Button minus = new Button(this, null, android.R.attr.buttonStyleSmall);
         minus.setText("-");
-
         minus.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-        /* Add Button to row. */
+
+        //adding the minus button to the Table row
         tr.addView(minus);
 
 
-
+        //making the text view that will contain the name of that role, text set by passed String identity
         TextView TV = new TextView(this);
         TV.setText(identity);
         //TV.setTextSize(20);
         //TV.setGravity(Gravity.CENTER|Gravity.LEFT);
+
+        //sets a long press listener on the TextView which displays a popup of how the role works
         info(TV,background);
         TV.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+
         tr.addView(TV);
 
+        //This text view has a number which shows how many of this role you plan on playing with
         TextView number = new TextView(this);
         number.setText("0");
         RoleCounting.add(number);
@@ -198,14 +226,14 @@ public class RoleNumbering2 extends AppCompatActivity {
         number.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
         tr.addView(number);
 
-        /* Create a Button to be the row-content. */
+        //creating a plus button
         Button plus = new Button(this, null, android.R.attr.buttonStyleSmall);
         plus.setText("+");
-
         plus.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
         /* Add Button to row. */
         tr.addView(plus);
 
+        //initializing the click listener for the plus and minus buttons
         plus(plus,number,filled);
         minus(minus,number,filled);
 
@@ -213,6 +241,7 @@ public class RoleNumbering2 extends AppCompatActivity {
         Capsule.addView(tr, new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
     }
 
+    //sets a long press listener on the TextView which displays a popup of how the role works
     public void info(TextView TV, final String info){
         TV.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -234,7 +263,9 @@ public class RoleNumbering2 extends AppCompatActivity {
         });
     }
 
-
+    //initializes the click listener for the minus button
+    //subtracts to both the counter at the top of the screen which lets the user know if they have enough roles
+    //subtracts the to small TextView on the same row which says how many of this role you have
     public void minus(Button minus, final TextView changes, final EditText filled){
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,6 +283,9 @@ public class RoleNumbering2 extends AppCompatActivity {
         });
     }
 
+    //initializes the click listener for the plus button
+    //adds to both the counter at the top of the screen which lets the user know if they have enough roles
+    //adds the to small TextView on the same row which says how many of this role you have
     public void plus(Button plus, final TextView changes, final EditText filled){
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,7 +304,7 @@ public class RoleNumbering2 extends AppCompatActivity {
 
 
 
-
+    //Looks at the top of the screen to see how many roles you've filled
     public int totalroles(ArrayList<TextView> RoleCounting){
         int total=0;
         TextView counter = (TextView) findViewById(R.id.OutOff2);
@@ -280,11 +314,10 @@ public class RoleNumbering2 extends AppCompatActivity {
             catch(Exception e){
 
             }
-
-
         return total;
     }
 
+    //initializing the background text array
     public String[] declareBackgrounds(){
         String[] backgrounds = {
                 "Witness:\n" +
