@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -26,6 +27,7 @@ import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 
 
 
@@ -61,12 +63,22 @@ public class RoleNumbering2 extends AppCompatActivity {
 
 
         //initialize Good Guys and title
+        createtitle("Good Roles");
         for(int i = 0; i< Identities.length;i++){
-            initialize(Identities[i],Backgrounds[i],RoleCounting);
+            if(Identities[i]=="Mole") {
+                createtitle("Evil Roles");
+            }
+            initialize(Identities[i], Backgrounds[i], RoleCounting);
         }
 
         //confirm button
-            confirm(Backgrounds,RoleCounting);
+        confirm(Backgrounds,RoleCounting);
+
+        RelativeLayout root = (RelativeLayout) findViewById(R.id.topper);
+        //Technically an error here with the time but works anyways
+        Snackbar snackbar = Snackbar.make(root, "Tap the roles to see what they do", 5000);
+        snackbar.show();
+
 
     }
 
@@ -93,6 +105,7 @@ public class RoleNumbering2 extends AppCompatActivity {
 
         //add the new Table row containing the confirm button into the main table layout
         tr.addView(Confirm);
+
         Capsule.addView(tr, new TableLayout.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
 
     }
@@ -176,7 +189,10 @@ public class RoleNumbering2 extends AppCompatActivity {
 
         TextView Title = new TextView(this);
         Title.setText(titleText);
-        //Title.setTextAppearance(android.R.style.TextAppearance_Large);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Title.setTextAppearance(android.R.style.TextAppearance_Large);
+        }
+        Title.setTextColor(getResources().getColor(R.color.black));
         //Title.setGravity(Gravity.CENTER);
 
         tr.addView(Title);
@@ -197,9 +213,10 @@ public class RoleNumbering2 extends AppCompatActivity {
         EditText filled = (EditText) findViewById(R.id.OutOff2);
 
         //Making the minus button for the row
-        Button minus = new Button(this, null, android.R.attr.buttonStyleSmall);
+        Button minus = new Button(this);
         minus.setText("-");
-        minus.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+        //minus.setGravity(Gravity.CENTER_HORIZONTAL);
+        minus.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,0.5f));
 
         //adding the minus button to the Table row
         tr.addView(minus);
@@ -208,6 +225,7 @@ public class RoleNumbering2 extends AppCompatActivity {
         //making the text view that will contain the name of that role, text set by passed String identity
         TextView TV = new TextView(this);
         TV.setText(identity);
+        TV.setTextColor(getResources().getColor(R.color.black));
         //TV.setTextSize(20);
         //TV.setGravity(Gravity.CENTER|Gravity.LEFT);
 
@@ -221,15 +239,17 @@ public class RoleNumbering2 extends AppCompatActivity {
         TextView number = new TextView(this);
         number.setText("0");
         RoleCounting.add(number);
+        number.setTextColor(getResources().getColor(R.color.black));
         //number.setTextSize(20);
         //number.setGravity(Gravity.CENTER|Gravity.LEFT);
         number.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
         tr.addView(number);
 
         //creating a plus button
-        Button plus = new Button(this, null, android.R.attr.buttonStyleSmall);
+        Button plus = new Button(this);
         plus.setText("+");
-        plus.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+        //plus.setGravity(Gravity.CENTER_HORIZONTAL);
+        plus.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,0.5f));
         /* Add Button to row. */
         tr.addView(plus);
 
@@ -243,9 +263,9 @@ public class RoleNumbering2 extends AppCompatActivity {
 
     //sets a long press listener on the TextView which displays a popup of how the role works
     public void info(TextView TV, final String info){
-        TV.setOnLongClickListener(new View.OnLongClickListener() {
+        TV.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
 
                 AlertDialog ad = new AlertDialog.Builder(RoleNumbering2.this).create();
                 ad.setCancelable(false); // This blocks the 'BACK' button
@@ -257,8 +277,6 @@ public class RoleNumbering2 extends AppCompatActivity {
                     }
                 });
                 ad.show();
-
-                return true;
             }
         });
     }
