@@ -335,8 +335,6 @@ public class RoleNumbering extends AppCompatActivity {
                     number2--;
                     filled.setText(String.valueOf(number2));
                 }
-
-
             }
         });
     }
@@ -363,7 +361,6 @@ public class RoleNumbering extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("Global", getApplicationContext().MODE_PRIVATE);
         int total = prefs.getInt("numberplayers", 0);
 
-
         //total roles is the number of roles in you have entered into the slots for this screen
         int totalroles = totalroles();
 
@@ -371,7 +368,6 @@ public class RoleNumbering extends AppCompatActivity {
         if(total== totalroles){
             Toast.makeText(getApplicationContext(), "we're good",
                     Toast.LENGTH_LONG).show();
-
 
             ArrayList<String> RolesSMS = new ArrayList<String>();
             String Detectivetext = "Detective: \n" +
